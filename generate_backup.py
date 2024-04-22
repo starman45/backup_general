@@ -110,6 +110,8 @@ def generate_backups(url, deploy):
 
 
 def main():
+    start_time = time.time()
+
     args = get_args()
     url, deploy = args.url, args.deploy
 
@@ -119,6 +121,11 @@ def main():
         print("Error: ")
         print(e)
         print('-------------------------------------')
+
+
+    end_time = time.time()  # Tiempo de finalización de la ejecución
+    execution_time = timedelta(seconds=end_time - start_time)  # Calcular tiempo de ejecución
+    print("Execution time:", execution_time)
 
 
 if __name__ == '__main__':
