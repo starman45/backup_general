@@ -75,7 +75,7 @@ fi
 
 ### Generating the .sql backup file for the given database name ###
 echo -n "Backup database: $database ... "
-PGPASSWORD="$db_password" /usr/bin/pg_dump -F p -U "$DB_ENV_POSTGRES_USER" --host $DB_PORT_5432_TCP_ADDR -f "${database}_${NOW}.sql" "$database" >> $logfile 2>&1
+PGPASSWORD="$db_password" /usr/bin/pg_dump -F p -U "$DB_ENV_POSTGRES_USER" --host $DB_PORT_5432_TCP_ADDR --no-owner -f "${database}_${NOW}.sql" "$database" >> $logfile 2>&1
 error=$?; if [ $error -eq 0 ]; then echo "OK"; else echo "ERROR: $error"; fi
 
 
